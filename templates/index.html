@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EVolve — Quantum Charging Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">E</span><span>EVOLVE<small>QUANTUM OPTIMIZATION</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav active" data-page="driver"><span>⌁</span> Driver experience <i></i></button>
+    <button class="nav" data-page="admin"><span>▦</span> Operations console</button>
+    <button class="nav" data-page="fleet"><span>⤢</span> Fleet optimizer</button>
+    <div class="sidebar-bottom">
+      <div class="live-dot"></div><span>SIMULATION ENVIRONMENT</span>
+      <p>Prototype data only<br><b>API · Connected</b></p>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">EVOLVE <span>/</span> <b id="crumb">DRIVER EXPERIENCE</b></div>
+      <div class="top-actions"><span class="sim-badge"><i></i> SIMULATED DATA</span><button class="avatar" title="Demo account">M</button></div>
+    </header>
+    <section class="page active" id="page-driver">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ROUTE-AWARE CHARGING INTELLIGENCE</div>
+          <h1>Charge smarter.<br><em>Move further.</em></h1>
+          <p>One decision that balances your battery, route, waiting time and cost — with safety built in.</p>
+          <div class="hero-buttons"><button class="btn primary" id="heroFind">Find best stop <span>↗</span></button><button class="btn ghost" data-goto="admin">Open operations ↗</button></div>
+          <div class="hero-proof"><span>01 <b>Feasibility first</b></span><span>02 <b>Explainable choices</b></span><span>03 <b>Live re-optimization</b></span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="glass-card"><div class="glass-top"><span>ENERGY STATE</span><span class="mini-live">● ACTIVE</span></div><div class="battery-ring"><div><b id="heroSoc">24%</b><small>BATTERY</small></div></div><div class="glass-metrics"><div><small>RANGE LEFT</small><b id="heroRange">~80 km</b></div><div><small>CONNECTOR</small><b id="heroConnector">CCS2</b></div></div></div>
+          <div class="floating-chip chip-a"><span>↗</span><div><small>ROUTE DETOUR</small><b>+04 min</b></div></div>
+          <div class="floating-chip chip-b"><span>ϟ</span><div><small>OPTIMIZATION</small><b>Feasible match</b></div></div>
+          <div class="visual-caption">FIG. 01 <span>HYBRID DECISION SYSTEM</span></div>
+        </div>
+      </div>
+      <div class="section-head"><div><div class="eyebrow">YOUR JOURNEY</div><h2>Plan your next charge</h2></div><span class="muted">Personalized · Constraint-aware</span></div>
+      <div class="planner-grid">
+        <div class="panel planner">
+          <div class="panel-head"><div><span class="step">01</span><b>Vehicle & battery</b></div><span class="tiny-tag">INPUT</span></div>
+          <div class="form-grid">
+            <label>Battery state <div class="range-line"><input id="battery" type="range" min="5" max="95" value="24"><b id="batteryVal">24%</b></div></label>
+            <label>Battery capacity <select id="capacity"><option value="40">40 kWh</option><option value="52">52 kWh</option><option value="60" selected>60 kWh</option><option value="72">72 kWh</option><option value="80">80 kWh</option></select></label>
+            <label>Connector type <select id="connector"><option>CCS2</option><option>Type 2</option><option>CHAdeMO</option></select></label>
+            <label>Trip remaining <div class="input-unit"><input id="target" type="number" value="145" min="5" max="600"><span>km</span></div></label>
+            <label>Safety reserve <select id="reserve"><option value="10">10% · Efficient</option><option value="15" selected>15% · Recommended</option><option value="20">20% · Extra buffer</option><option value="25">25% · Conservative</option></select></label>
+          </div>
+        </div>
+        <div class="panel mode-panel">
+          <div class="panel-head"><div><span class="step">02</span><b>Optimization mode</b></div><span class="tiny-tag">OBJECTIVE</span></div>
+          <div class="mode-options">
+            <button class="mode" data-mode="fastest"><span>ϟ</span><b>Fastest</b><small>Minimize total time</small></button>
+            <button class="mode" data-mode="cheapest"><span>₹</span><b>Cheapest</b><small>Lower charging cost</small></button>
+            <button class="mode selected" data-mode="balanced"><span>◈</span><b>Balanced</b><small>Time, cost & queue</small></button>
+            <button class="mode" data-mode="eco"><span>⌁</span><b>Eco-friendly</b><small>Prefer cleaner stations</small></button>
+          </div>
+          <button class="btn primary full" id="findBtn">Find best stop <span>↗</span></button>
+        </div>
+      </div>
+      <div class="section-head results-head"><div><div class="eyebrow">OPTIMIZER OUTPUT</div><h2>Recommended charging stops</h2></div><div id="validation" class="validation">Awaiting request</div></div>
+      <div id="recommendations" class="recommendations empty-state"><div class="empty-icon">⌁</div><b>Your next best stop, explained.</b><p>Enter your journey details and run the optimizer to compare feasible stations.</p></div>
+      <div class="method-note"><span>ⓘ</span><p><b>Safety gate:</b> only online stations with available ports and a compatible connector are considered. Estimates are simulated and should not be used for real-world driving decisions.</p></div>
+    </section>
+    <section class="page" id="page-admin">
+      <div class="page-title"><div class="eyebrow">CONTROL ROOM / 02</div><h1>Operations <em>console.</em></h1><p>Monitor station health, intervene on changing conditions and refresh the shared recommendation state.</p></div>
+      <div class="stat-grid" id="stats"></div>
+      <div class="section-head"><div><div class="eyebrow">NETWORK STATUS</div><h2>Charging stations</h2></div><span class="muted">Changes apply to Driver panel</span></div>
+      <div id="stationTable" class="station-list"></div>
+      <div class="section-head"><div><div class="eyebrow">AUDIT TRAIL</div><h2>Recent interventions</h2></div></div>
+      <div id="events" class="event-list"></div>
+    </section>
+    <section class="page" id="page-fleet">
+      <div class="page-title"><div class="eyebrow">JOINT ASSIGNMENT / 03</div><h1>Optimize the <em>whole fleet.</em></h1><p>Assign several EVs together so they do not independently compete for the same constrained station.</p></div>
+      <div class="fleet-banner"><div class="fleet-symbol">⤢</div><div><b>Hybrid optimization workflow</b><p>Classical feasibility filter → QUBO joint assignment model → solution validation. Small demo instances are solved by exact classical enumeration.</p></div><button class="btn primary" id="fleetBtn">Optimize fleet ↗</button></div>
+      <div class="section-head"><div><div class="eyebrow">JOINT SCHEDULE</div><h2>Fleet allocation</h2></div><span class="sim-badge"><i></i> SIMULATED EVS</span></div>
+      <div id="fleetResults" class="fleet-results empty-state"><div class="empty-icon">⤢</div><b>No schedule generated yet</b><p>Run the fleet optimizer to create a joint assignment.</p></div>
+      <div class="method-note"><span>ⓘ</span><p>Step 1 QUBO enforces one station per EV and unique station assignments. Port/time-slot exclusivity, station power limits and existing charging-session constraints are planned for Step 2.</p></div>
+    </section>
+    <footer><span>EVOLVE © 2026</span><span>BUILT FOR A SAFER ENERGY JOURNEY</span><span>PROTOTYPE v0.1.0</span></footer>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/static/app.js"></script>
+</body></html>
